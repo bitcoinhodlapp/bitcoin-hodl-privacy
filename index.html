@@ -1,66 +1,387 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Política de Privacidad — Bitcoin HODL</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidad — Bitcoin HODL</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;1,14..32,400;1,14..32,500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f7f8fa;
+            --card-bg: #ffffff;
+            --text: #1a1d26;
+            --text-secondary: #4a4f5c;
+            --text-muted: #6b7280;
+            --accent: #f7931a;
+            --accent-soft: #fef3e4;
+            --border: #e5e7ec;
+            --border-light: #f0f1f5;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.04);
+            --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.07), 0 2px 8px rgba(0, 0, 0, 0.04);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --transition: 0.2s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 24px 16px 60px;
+        }
+
+        /* ── Header decorativo ── */
+        .page-header {
+            text-align: center;
+            margin-bottom: 32px;
+            padding-top: 16px;
+        }
+
+        .page-header .logo-dot {
+            display: inline-block;
+            width: 44px;
+            height: 44px;
+            background: var(--accent);
+            border-radius: 50%;
+            margin-bottom: 12px;
+            position: relative;
+            box-shadow: 0 4px 14px rgba(247, 147, 26, 0.35);
+        }
+
+        .page-header .logo-dot::after {
+            content: '₿';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .page-header .app-name {
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 0.4px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+
+        /* ── Contenedor principal ── */
+        .main-card {
+            background: var(--card-bg);
+            max-width: 760px;
+            width: 100%;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            padding: 44px 48px 40px;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Línea decorativa superior */
+        .main-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #f7931a 0%, #f7a844 40%, #f7931a 100%);
+            border-radius: 0 0 2px 2px;
+        }
+
+        /* ── Título principal ── */
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text);
+            letter-spacing: -0.3px;
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+
+        .update-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: var(--accent-soft);
+            color: #b86e0e;
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-bottom: 28px;
+            border: 1px solid #fde4c2;
+            letter-spacing: 0.1px;
+        }
+
+        .update-badge .dot {
+            width: 7px;
+            height: 7px;
+            background: #f7931a;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        /* ── Párrafo intro ── */
+        .intro-text {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border-light);
+            font-weight: 400;
+        }
+
+        /* ── Secciones ── */
+        .section {
+            margin-bottom: 26px;
+            padding-left: 0;
+            position: relative;
+        }
+
+        .section:last-of-type {
+            margin-bottom: 20px;
+        }
+
+        .section h2 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 8px;
+            letter-spacing: -0.2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section h2 .num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            min-width: 28px;
+            background: #f8f9fc;
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: 700;
+            border-radius: 7px;
+            border: 1px solid var(--border);
+        }
+
+        .section p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-left: 0;
+            padding-left: 38px;
+        }
+
+        .section p a {
+            color: #c2740e;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #f5d5a8;
+            transition: var(--transition);
+            word-break: break-all;
+        }
+
+        .section p a:hover {
+            color: #9b5b0b;
+            border-bottom-color: #d4943a;
+        }
+
+        /* ── Sección de contacto destacada ── */
+        .contact-highlight {
+            background: #fafbfc;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 18px 20px;
+            margin-top: 4px;
+            margin-left: 38px;
+            display: inline-block;
+            font-weight: 500;
+            color: #1a1d26;
+            letter-spacing: 0.1px;
+            word-break: break-all;
+            transition: var(--transition);
+        }
+
+        .contact-highlight:hover {
+            border-color: #d0d4dd;
+            background: #f5f7fa;
+        }
+
+        /* ── Footer ── */
+        .page-footer {
+            text-align: center;
+            margin-top: 28px;
+            font-size: 0.8rem;
+            color: #9ca3af;
+            letter-spacing: 0.2px;
+        }
+
+        .page-footer span {
+            color: #b0b7c3;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 640px) {
+            .main-card {
+                padding: 28px 20px 28px;
+                border-radius: var(--radius-md);
+            }
+
+            h1 {
+                font-size: 1.4rem;
+            }
+
+            .section p {
+                padding-left: 0;
+                margin-top: 4px;
+            }
+
+            .section h2 {
+                gap: 8px;
+            }
+
+            .contact-highlight {
+                margin-left: 0;
+                display: block;
+                text-align: center;
+            }
+
+            .update-badge {
+                font-size: 0.78rem;
+                padding: 5px 10px;
+            }
+        }
+    </style>
 </head>
-<body style="font-family: sans-serif; max-width: 700px; margin: 40px auto; line-height: 1.6;">
+<body>
 
-<h1>Política de Privacidad — Bitcoin HODL</h1>
-<p><em>Última actualización: [FECHA]</em></p>
+    <!-- Cabecera sutil -->
+    <div class="page-header">
+        <div class="logo-dot"></div>
+        <div class="app-name">Bitcoin HODL</div>
+    </div>
 
-<p>Bitcoin HODL ("la app") es una aplicación de seguimiento de patrimonio en
-Bitcoin. Esta política explica qué datos se recogen y cómo se usan.</p>
+    <!-- Tarjeta principal -->
+    <div class="main-card">
 
-<h2>1. Datos que la app NO recoge</h2>
-<p>Bitcoin HODL no requiere registro ni inicio de sesión. Tus compras de
-Bitcoin, tus carteras y tu saldo se almacenan <strong>exclusivamente en tu
-dispositivo</strong>. Estos datos nunca se envían a ningún servidor propio
-de Bitcoin HODL ni de terceros.</p>
+        <h1>Política de Privacidad — Bitcoin HODL</h1>
+        <div class="update-badge">
+            <span class="dot"></span> Última actualización: 3 de agosto de 2026
+        </div>
 
-<h2>2. Datos gestionados por Google Play Billing</h2>
-<p>Si contratas la suscripción Premium, el pago lo procesa directamente
-Google Play. Bitcoin HODL nunca recibe tu número de tarjeta ni tus datos de
-pago. Google Play gestiona el historial de esa compra según su propia
-política de privacidad.</p>
+        <p class="intro-text">Bitcoin HODL ("la app") es una aplicación de seguimiento de patrimonio en
+            Bitcoin. Esta política explica qué datos se recogen y cómo se usan.</p>
 
-<h2>3. Publicidad (Google AdMob)</h2>
-<p>Los usuarios del plan gratuito pueden ver anuncios servidos por Google
-AdMob. AdMob puede recoger de forma automática: dirección IP (para estimar
-tu ubicación aproximada), interacciones con los anuncios, información de
-diagnóstico/fallos, e identificadores de dispositivo, con fines de
-publicidad, análisis y prevención de fraude. Si te encuentras en el Espacio
-Económico Europeo o el Reino Unido, se te pedirá tu consentimiento antes de
-mostrarte anuncios personalizados. Más información sobre cómo Google trata
-estos datos: <a href="https://policies.google.com/technologies/partner-sites">
-https://policies.google.com/technologies/partner-sites</a></p>
+        <!-- Sección 1 -->
+        <div class="section">
+            <h2><span class="num">1</span> Datos que la app NO recoge</h2>
+            <p>Bitcoin HODL no requiere registro ni inicio de sesión. Tus compras de
+                Bitcoin, tus carteras y tu saldo se almacenan <strong>exclusivamente en tu
+                    dispositivo</strong>. Estos datos nunca se envían a ningún servidor propio
+                de Bitcoin HODL ni de terceros.</p>
+        </div>
 
-<h2>4. Contenido de terceros (gráficos)</h2>
-<p>La pantalla de gráficos de precio carga un widget público de TradingView
-dentro de la app. Esa carga está sujeta a la política de privacidad de
-TradingView, no a la de Bitcoin HODL.</p>
+        <!-- Sección 2 -->
+        <div class="section">
+            <h2><span class="num">2</span> Datos gestionados por Google Play Billing</h2>
+            <p>Si contratas la suscripción Premium, el pago lo procesa directamente
+                Google Play. Bitcoin HODL nunca recibe tu número de tarjeta ni tus datos de
+                pago. Google Play gestiona el historial de esa compra según su propia
+                política de privacidad.</p>
+        </div>
 
-<h2>5. Copias de seguridad</h2>
-<p>Puedes exportar una copia de seguridad de tus datos a un archivo que tú
-mismo eliges guardar en tu dispositivo. Ese archivo permanece bajo tu
-control exclusivo; Bitcoin HODL no tiene acceso a él una vez exportado.</p>
+        <!-- Sección 3 -->
+        <div class="section">
+            <h2><span class="num">3</span> Publicidad (Google AdMob)</h2>
+            <p>Los usuarios del plan gratuito pueden ver anuncios servidos por Google
+                AdMob. AdMob puede recoger de forma automática: dirección IP (para estimar
+                tu ubicación aproximada), interacciones con los anuncios, información de
+                diagnóstico/fallos, e identificadores de dispositivo, con fines de
+                publicidad, análisis y prevención de fraude. Si te encuentras en el Espacio
+                Económico Europeo o el Reino Unido, se te pedirá tu consentimiento antes de
+                mostrarte anuncios personalizados. Más información sobre cómo Google trata
+                estos datos: <a href="https://policies.google.com/technologies/partner-sites">
+                    https://policies.google.com/technologies/partner-sites</a></p>
+        </div>
 
-<h2>6. Tus derechos</h2>
-<p>Puedes eliminar toda tu información en cualquier momento desinstalando
-la app. Para solicitar información sobre los datos que gestionan Google
-Play Billing o Google AdMob en tu nombre, contacta directamente con Google
-o consulta sus propias políticas de privacidad.</p>
+        <!-- Sección 4 -->
+        <div class="section">
+            <h2><span class="num">4</span> Contenido de terceros (gráficos)</h2>
+            <p>La pantalla de gráficos de precio carga un widget público de TradingView
+                dentro de la app. Esa carga está sujeta a la política de privacidad de
+                TradingView, no a la de Bitcoin HODL.</p>
+        </div>
 
-<h2>7. Menores de edad</h2>
-<p>Bitcoin HODL no está dirigida a menores de 13 años ni recoge
-deliberadamente datos de menores.</p>
+        <!-- Sección 5 -->
+        <div class="section">
+            <h2><span class="num">5</span> Copias de seguridad</h2>
+            <p>Puedes exportar una copia de seguridad de tus datos a un archivo que tú
+                mismo eliges guardar en tu dispositivo. Ese archivo permanece bajo tu
+                control exclusivo; Bitcoin HODL no tiene acceso a él una vez exportado.</p>
+        </div>
 
-<h2>8. Cambios en esta política</h2>
-<p>Si esta política cambia, se actualizará la fecha indicada al principio
-de este documento.</p>
+        <!-- Sección 6 -->
+        <div class="section">
+            <h2><span class="num">6</span> Tus derechos</h2>
+            <p>Puedes eliminar toda tu información en cualquier momento desinstalando
+                la app. Para solicitar información sobre los datos que gestionan Google
+                Play Billing o Google AdMob en tu nombre, contacta directamente con Google
+                o consulta sus propias políticas de privacidad.</p>
+        </div>
 
-<h2>9. Contacto</h2>
-<p>Para cualquier consulta sobre privacidad, escribe a: [TU EMAIL DE CONTACTO]</p>
+        <!-- Sección 7 -->
+        <div class="section">
+            <h2><span class="num">7</span> Menores de edad</h2>
+            <p>Bitcoin HODL no está dirigida a menores de 13 años ni recoge
+                deliberadamente datos de menores.</p>
+        </div>
+
+        <!-- Sección 8 -->
+        <div class="section">
+            <h2><span class="num">8</span> Cambios en esta política</h2>
+            <p>Si esta política cambia, se actualizará la fecha indicada al principio
+                de este documento.</p>
+        </div>
+
+        <!-- Sección 9 - Contacto -->
+        <div class="section">
+            <h2><span class="num">9</span> Contacto</h2>
+            <p>Para cualquier consulta sobre privacidad, escribe a:</p>
+            <div class="contact-highlight">bitcoinhodl.app@gmail.com</div>
+        </div>
+
+    </div>
+
+    <!-- Pie de página -->
+    <div class="page-footer">
+        Bitcoin HODL &copy; 2026 &nbsp;·&nbsp; <span>Privacidad y transparencia</span>
+    </div>
 
 </body>
 </html>
