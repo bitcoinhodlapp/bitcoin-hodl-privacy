@@ -47,14 +47,20 @@
             padding: 32px 16px 60px;
         }
 
-        /* Controles de idioma */
+        /* Controles de idioma -- ampliado de 2 a 11 idiomas: el
+           contenedor pasa a envolver en varias filas (flex-wrap) en vez
+           de forzar una sola línea, conservando la misma forma de
+           píldora por botón y el mismo estilo activo/hover. */
         .lang-switcher {
             display: flex;
-            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
             margin-bottom: 28px;
+            max-width: 760px;
             background: var(--card-bg);
-            padding: 5px;
-            border-radius: 40px;
+            padding: 8px;
+            border-radius: 22px;
             border: 1px solid var(--border);
             box-shadow: var(--shadow-sm);
         }
@@ -65,8 +71,8 @@
             color: var(--text-muted);
             font-family: 'Inter', sans-serif;
             font-weight: 500;
-            font-size: 0.9rem;
-            padding: 8px 18px;
+            font-size: 0.85rem;
+            padding: 7px 14px;
             border-radius: 30px;
             cursor: pointer;
             transition: all 0.25s ease;
@@ -245,14 +251,20 @@
         }
 
         /* Ocultar idioma inactivo */
-        .lang-es, .lang-en {
+        .lang-es, .lang-en, .lang-fr, .lang-de, .lang-it, .lang-pt, .lang-ja, .lang-ko, .lang-zh, .lang-tr {
             display: none;
         }
 
-        body[data-lang="es"] .lang-es {
-            display: block;
-        }
-        body[data-lang="en"] .lang-en {
+        body[data-lang="es"] .lang-es,
+        body[data-lang="en"] .lang-en,
+        body[data-lang="fr"] .lang-fr,
+        body[data-lang="de"] .lang-de,
+        body[data-lang="it"] .lang-it,
+        body[data-lang="pt"] .lang-pt,
+        body[data-lang="ja"] .lang-ja,
+        body[data-lang="ko"] .lang-ko,
+        body[data-lang="zh"] .lang-zh,
+        body[data-lang="tr"] .lang-tr {
             display: block;
         }
 
@@ -280,8 +292,16 @@
 
     <!-- Selector de idioma -->
     <div class="lang-switcher">
-        <button class="lang-btn active" onclick="setLanguage('es')">Español</button>
-        <button class="lang-btn" onclick="setLanguage('en')">English</button>
+        <button class="lang-btn active" data-lang="es" onclick="setLanguage('es')">Español</button>
+        <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">English</button>
+        <button class="lang-btn" data-lang="fr" onclick="setLanguage('fr')">Français</button>
+        <button class="lang-btn" data-lang="de" onclick="setLanguage('de')">Deutsch</button>
+        <button class="lang-btn" data-lang="it" onclick="setLanguage('it')">Italiano</button>
+        <button class="lang-btn" data-lang="pt" onclick="setLanguage('pt')">Português</button>
+        <button class="lang-btn" data-lang="ja" onclick="setLanguage('ja')">日本語</button>
+        <button class="lang-btn" data-lang="ko" onclick="setLanguage('ko')">한국어</button>
+        <button class="lang-btn" data-lang="zh" onclick="setLanguage('zh')">简体中文</button>
+        <button class="lang-btn" data-lang="tr" onclick="setLanguage('tr')">Türkçe</button>
     </div>
 
     <!-- Tarjeta principal -->
@@ -384,23 +404,427 @@
 
             <div class="policy-note">Bitcoin HODL — this document reflects the actual behavior of the application in its current version.</div>
         </div>
+
+        <!-- CONTENU EN FRANÇAIS -->
+        <div class="lang-fr">
+            <h1>Politique de confidentialité — Bitcoin HODL</h1>
+            <div class="update-badge">
+                <span class="dot"></span> Dernière mise à jour : 24 août 2026
+            </div>
+            <p class="intro-text">Bitcoin HODL (« l'application ») est un outil de suivi de patrimoine en Bitcoin. Cette politique explique quelles données sont collectées et comment elles sont utilisées.</p>
+
+            <div class="section">
+                <h2><span class="num">1</span> Données que l'application NE collecte PAS</h2>
+                <p>Bitcoin HODL ne nécessite ni inscription ni connexion. Vos achats de Bitcoin, vos portefeuilles et votre solde sont stockés exclusivement sur votre appareil. Ces données ne sont jamais envoyées à un serveur de Bitcoin HODL ni à un serveur tiers.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">2</span> Données gérées par Google Play Billing</h2>
+                <p>Si vous souscrivez à l'abonnement Premium, le paiement est traité directement par Google Play. Bitcoin HODL ne reçoit jamais votre numéro de carte ni vos informations de paiement. Google Play gère l'historique de cet achat conformément à sa propre politique de confidentialité.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">3</span> Publicité (Google AdMob)</h2>
+                <p>Bitcoin HODL peut afficher des publicités Google AdMob dans le plan gratuit ; cette fonctionnalité est actuellement désactivée, donc aucun utilisateur ne voit de publicité dans la version actuellement installée. Une fois activée, AdMob peut collecter automatiquement : l'adresse IP (pour estimer votre localisation approximative), les interactions avec les publicités, des informations de diagnostic/plantage, ainsi que des identifiants d'appareil, à des fins de publicité, d'analyse et de prévention de la fraude. Avant d'afficher des publicités personnalisées aux utilisateurs de l'Espace économique européen ou du Royaume-Uni, l'application demandera leur consentement explicite, conformément à la réglementation applicable. Plus d'informations sur la façon dont Google traite ces données : <a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a></p>
+            </div>
+            <div class="section">
+                <h2><span class="num">4</span> Données de marché et graphiques</h2>
+                <p>Le graphique de prix est généré nativement dans l'application ; il ne charge aucun widget ni contenu tiers. Les prix et données de marché affichés proviennent d'API publiques de fournisseurs tels que Coinbase et Binance, interrogées directement par l'application — ces requêtes n'incluent jamais aucune donnée personnelle vous concernant.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">5</span> Sauvegardes</h2>
+                <p>Vous pouvez exporter une sauvegarde de vos données vers un fichier que vous choisissez d'enregistrer sur votre appareil. Ce fichier reste sous votre contrôle exclusif ; Bitcoin HODL n'y a plus accès une fois qu'il est exporté.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">6</span> Vos droits</h2>
+                <p>Vous pouvez supprimer toutes vos informations à tout moment en désinstallant l'application. Pour demander des informations sur les données gérées en votre nom par Google Play Billing ou Google AdMob, contactez directement Google ou consultez leurs politiques de confidentialité respectives.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">7</span> Mineurs</h2>
+                <p>Bitcoin HODL ne s'adresse pas aux enfants de moins de 13 ans et ne collecte pas sciemment de données auprès de mineurs.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">8</span> Modifications de cette politique</h2>
+                <p>En cas de modification de cette politique, la date indiquée en haut de ce document sera mise à jour.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">9</span> Contact</h2>
+                <p>Pour toute question relative à la confidentialité, écrivez à :</p>
+                <div class="contact-highlight">bitcoinhodl.app@gmail.com</div>
+            </div>
+
+            <div class="policy-note">Bitcoin HODL — ce document reflète le comportement réel de l'application dans sa version actuelle.</div>
+        </div>
+
+        <!-- INHALT AUF DEUTSCH -->
+        <div class="lang-de">
+            <h1>Datenschutzerklärung — Bitcoin HODL</h1>
+            <div class="update-badge">
+                <span class="dot"></span> Zuletzt aktualisiert: 24. August 2026
+            </div>
+            <p class="intro-text">Bitcoin HODL ("die App") ist ein Tool zur Verfolgung Ihres Bitcoin-Vermögens. Diese Richtlinie erklärt, welche Daten erhoben werden und wie sie verwendet werden.</p>
+
+            <div class="section">
+                <h2><span class="num">1</span> Daten, die die App NICHT erhebt</h2>
+                <p>Bitcoin HODL erfordert keine Registrierung oder Anmeldung. Ihre Bitcoin-Käufe, Wallets und Ihr Bestand werden ausschließlich auf Ihrem Gerät gespeichert. Diese Daten werden niemals an einen Server von Bitcoin HODL oder Dritten gesendet.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">2</span> Von Google Play Billing verarbeitete Daten</h2>
+                <p>Wenn Sie das Premium-Abo abschließen, wird die Zahlung direkt von Google Play verarbeitet. Bitcoin HODL erhält niemals Ihre Kartennummer oder Zahlungsdaten. Google Play verwaltet den Kaufverlauf gemäß seiner eigenen Datenschutzerklärung.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">3</span> Werbung (Google AdMob)</h2>
+                <p>Bitcoin HODL kann im kostenlosen Plan Anzeigen von Google AdMob zeigen; diese Funktion ist derzeit deaktiviert, sodass in der aktuell installierten Version kein Nutzer Anzeigen sieht. Sobald sie aktiv ist, kann AdMob automatisch Folgendes erfassen: IP-Adresse (zur Schätzung deines ungefähren Standorts), Interaktionen mit Anzeigen, Diagnose-/Absturzinformationen und Geräte-Kennungen, zu Zwecken der Werbung, Analyse und Betrugsprävention. Bevor Nutzern im Europäischen Wirtschaftsraum oder im Vereinigten Königreich personalisierte Anzeigen gezeigt werden, holt die App deren ausdrückliche Einwilligung gemäß den geltenden Vorschriften ein. Weitere Informationen dazu, wie Google diese Daten verarbeitet: <a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a></p>
+            </div>
+            <div class="section">
+                <h2><span class="num">4</span> Marktdaten und Charts</h2>
+                <p>Der Preis-Chart wird nativ innerhalb der App gerendert; es wird kein Widget oder Inhalt von Drittanbietern geladen. Die angezeigten Preise und Marktdaten stammen von öffentlichen APIs von Anbietern wie Coinbase und Binance, die direkt von der App abgefragt werden — diese Abfragen enthalten niemals persönliche Daten von dir.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">5</span> Backups</h2>
+                <p>Sie können ein Backup Ihrer Daten in eine Datei exportieren, die Sie selbst auf Ihrem Gerät speichern. Diese Datei bleibt unter Ihrer ausschließlichen Kontrolle; Bitcoin HODL hat nach dem Export keinen Zugriff mehr darauf.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">6</span> Ihre Rechte</h2>
+                <p>Sie können alle Ihre Informationen jederzeit löschen, indem Sie die App deinstallieren. Um Informationen über die Daten anzufordern, die Google Play Billing oder Google AdMob in Ihrem Namen verwalten, wenden Sie sich direkt an Google oder lesen Sie deren jeweilige Datenschutzerklärungen.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">7</span> Minderjährige</h2>
+                <p>Bitcoin HODL richtet sich nicht an Kinder unter 13 Jahren und erhebt wissentlich keine Daten von Minderjährigen.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">8</span> Änderungen dieser Richtlinie</h2>
+                <p>Bei Änderungen dieser Richtlinie wird das Datum am Anfang dieses Dokuments aktualisiert.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">9</span> Kontakt</h2>
+                <p>Bei Fragen zum Datenschutz schreiben Sie an:</p>
+                <div class="contact-highlight">bitcoinhodl.app@gmail.com</div>
+            </div>
+
+            <div class="policy-note">Bitcoin HODL — dieses Dokument spiegelt das tatsächliche Verhalten der Anwendung in ihrer aktuellen Version wider.</div>
+        </div>
+
+        <!-- CONTENUTO IN ITALIANO -->
+        <div class="lang-it">
+            <h1>Informativa sulla privacy — Bitcoin HODL</h1>
+            <div class="update-badge">
+                <span class="dot"></span> Ultimo aggiornamento: 24 agosto 2026
+            </div>
+            <p class="intro-text">Bitcoin HODL ("l'app") è uno strumento di monitoraggio del patrimonio in Bitcoin. Questa informativa spiega quali dati vengono raccolti e come vengono utilizzati.</p>
+
+            <div class="section">
+                <h2><span class="num">1</span> Dati che l'app NON raccoglie</h2>
+                <p>Bitcoin HODL non richiede registrazione né accesso con account. I tuoi acquisti di Bitcoin, i tuoi wallet e il tuo saldo vengono memorizzati esclusivamente sul tuo dispositivo. Questi dati non vengono mai inviati a nessun server di Bitcoin HODL né di terze parti.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">2</span> Dati gestiti da Google Play Billing</h2>
+                <p>Se sottoscrivi l'abbonamento Premium, il pagamento viene elaborato direttamente da Google Play. Bitcoin HODL non riceve mai il numero della tua carta né i tuoi dati di pagamento. Google Play gestisce lo storico di questo acquisto secondo la propria informativa sulla privacy.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">3</span> Pubblicità (Google AdMob)</h2>
+                <p>Bitcoin HODL può mostrare annunci di Google AdMob nel piano gratuito; questa funzione è attualmente disattivata, quindi nessun utente vede annunci nella versione attualmente installata. Quando sarà attiva, AdMob potrà raccogliere automaticamente: indirizzo IP (per stimare la tua posizione approssimativa), interazioni con gli annunci, informazioni diagnostiche/di arresto anomalo e identificatori del dispositivo, per finalità pubblicitarie, di analisi e prevenzione delle frodi. Prima di mostrare annunci personalizzati agli utenti nello Spazio Economico Europeo o nel Regno Unito, l'app richiederà il loro consenso esplicito, in conformità con la normativa applicabile. Maggiori informazioni su come Google gestisce questi dati: <a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a></p>
+            </div>
+            <div class="section">
+                <h2><span class="num">4</span> Dati di mercato e grafici</h2>
+                <p>Il grafico del prezzo viene renderizzato in modo nativo all'interno dell'app; non carica alcun widget o contenuto di terze parti. I prezzi e i dati di mercato mostrati provengono da API pubbliche di fornitori come Coinbase e Binance, interrogate direttamente dall'app — queste richieste non includono mai alcun dato personale.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">5</span> Backup</h2>
+                <p>Puoi esportare un backup dei tuoi dati in un file che scegli tu di salvare sul tuo dispositivo. Quel file rimane sotto il tuo controllo esclusivo; Bitcoin HODL non vi ha alcun accesso una volta esportato.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">6</span> I tuoi diritti</h2>
+                <p>Puoi eliminare tutte le tue informazioni in qualsiasi momento disinstallando l'app. Per richiedere informazioni sui dati gestiti da Google Play Billing o Google AdMob per tuo conto, contatta direttamente Google o consulta le rispettive informative sulla privacy.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">7</span> Minori</h2>
+                <p>Bitcoin HODL non è rivolta a minori di 13 anni e non raccoglie consapevolmente dati di minori.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">8</span> Modifiche a questa informativa</h2>
+                <p>Se questa informativa cambia, la data indicata all'inizio del documento verrà aggiornata.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">9</span> Contatti</h2>
+                <p>Per qualsiasi richiesta relativa alla privacy, scrivi a:</p>
+                <div class="contact-highlight">bitcoinhodl.app@gmail.com</div>
+            </div>
+
+            <div class="policy-note">Bitcoin HODL — questo documento riflette il comportamento reale dell'applicazione nella sua versione attuale.</div>
+        </div>
+
+        <!-- CONTEÚDO EM PORTUGUÊS -->
+        <div class="lang-pt">
+            <h1>Política de Privacidade — Bitcoin HODL</h1>
+            <div class="update-badge">
+                <span class="dot"></span> Última atualização: 24 de agosto de 2026
+            </div>
+            <p class="intro-text">O Bitcoin HODL ("o aplicativo") é um rastreador de patrimônio em Bitcoin. Esta política explica quais dados são coletados e como são usados.</p>
+
+            <div class="section">
+                <h2><span class="num">1</span> Dados que o aplicativo NÃO coleta</h2>
+                <p>O Bitcoin HODL não exige cadastro nem login. Suas compras de Bitcoin, carteiras e saldo são armazenados exclusivamente no seu dispositivo. Esses dados nunca são enviados a nenhum servidor do Bitcoin HODL ou de terceiros.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">2</span> Dados gerenciados pelo Google Play Billing</h2>
+                <p>Se você assinar o Premium, o pagamento é processado diretamente pelo Google Play. O Bitcoin HODL nunca recebe o número do seu cartão nem seus dados de pagamento. O Google Play gerencia o histórico da compra de acordo com sua própria política de privacidade.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">3</span> Publicidade (Google AdMob)</h2>
+                <p>A Bitcoin HODL pode mostrar anúncios do Google AdMob no plano gratuito; esta funcionalidade está atualmente desativada, pelo que nenhum utilizador vê anúncios na versão atualmente instalada. Quando estiver ativa, a AdMob pode recolher automaticamente: endereço IP (para estimar a tua localização aproximada), interações com os anúncios, informação de diagnóstico/falhas e identificadores de dispositivo, para fins de publicidade, análise e prevenção de fraude. Antes de mostrar anúncios personalizados a utilizadores no Espaço Económico Europeu ou no Reino Unido, a app pedirá o seu consentimento explícito, em conformidade com a regulamentação aplicável. Mais informações sobre como a Google trata estes dados: <a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a></p>
+            </div>
+            <div class="section">
+                <h2><span class="num">4</span> Dados de mercado e gráficos</h2>
+                <p>O gráfico de preço é renderizado de forma nativa dentro da app; não carrega nenhum widget ou conteúdo de terceiros. Os preços e dados de mercado apresentados provêm de APIs públicas de fornecedores como a Coinbase e a Binance, consultadas diretamente pela app — estes pedidos nunca incluem quaisquer dados pessoais teus.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">5</span> Backups</h2>
+                <p>Você pode exportar um backup dos seus dados para um arquivo que escolhe salvar no seu dispositivo. Esse arquivo permanece sob seu controle exclusivo; o Bitcoin HODL não tem acesso a ele depois de exportado.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">6</span> Seus direitos</h2>
+                <p>Você pode excluir todas as suas informações a qualquer momento desinstalando o aplicativo. Para solicitar informações sobre os dados que o Google Play Billing ou o Google AdMob gerenciam em seu nome, entre em contato diretamente com o Google ou consulte suas respectivas políticas de privacidade.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">7</span> Menores de idade</h2>
+                <p>O Bitcoin HODL não é direcionado a menores de 13 anos e não coleta intencionalmente dados de menores.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">8</span> Alterações nesta política</h2>
+                <p>Se esta política for alterada, a data no topo deste documento será atualizada.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">9</span> Contato</h2>
+                <p>Para qualquer dúvida sobre privacidade, escreva para:</p>
+                <div class="contact-highlight">bitcoinhodl.app@gmail.com</div>
+            </div>
+
+            <div class="policy-note">Bitcoin HODL — este documento reflete o comportamento real da aplicação na sua versão atual.</div>
+        </div>
+
+        <!-- 日本語のコンテンツ -->
+        <div class="lang-ja">
+            <h1>プライバシーポリシー — Bitcoin HODL</h1>
+            <div class="update-badge">
+                <span class="dot"></span> 最終更新日: 2026年8月24日
+            </div>
+            <p class="intro-text">Bitcoin HODL(以下「本アプリ」)は、Bitcoin資産の管理・追跡アプリです。本ポリシーでは、収集するデータとその利用方法について説明します。</p>
+
+            <div class="section">
+                <h2><span class="num">1</span> 本アプリが収集しないデータ</h2>
+                <p>Bitcoin HODLは、会員登録やログインを必要としません。あなたのBitcoin購入履歴、ウォレット、残高は、お使いのデバイス上にのみ保存されます。これらのデータがBitcoin HODLのサーバーや第三者のサーバーに送信されることは一切ありません。</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">2</span> Google Play Billingが管理するデータ</h2>
+                <p>Premiumに登録された場合、決済処理はGoogle Playが直接行います。Bitcoin HODLがお客様のカード番号や決済情報を受け取ることは一切ありません。Google Playは、独自のプライバシーポリシーに基づいて購入履歴を管理します。</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">3</span> 広告(Google AdMob)</h2>
+                <p>Bitcoin HODLは無料プランでGoogle AdMobの広告を表示することがありますが、この機能は現在無効になっているため、現在インストールされているバージョンでは広告は表示されません。有効になった場合、AdMobは広告目的、分析、不正防止のため、IPアドレス(おおよその位置情報の推定用)、広告とのやり取り、診断・クラッシュ情報、デバイス識別子を自動的に収集することがあります。欧州経済領域(EEA)または英国のユーザーにパーソナライズド広告を表示する前に、適用法令に従い、アプリは明示的な同意を求めます。Googleがこれらのデータをどのように扱うかについての詳細: <a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a></p>
+            </div>
+            <div class="section">
+                <h2><span class="num">4</span> 市場データとチャート</h2>
+                <p>価格チャートはアプリ内でネイティブに描画されており、サードパーティのウィジェットやコンテンツは読み込みません。表示される価格や市場データは、CoinbaseやBinanceなどのプロバイダーの公開APIから、アプリが直接取得したものです。これらのリクエストにお客様の個人データが含まれることはありません。</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">5</span> バックアップ</h2>
+                <p>ご自身のデータのバックアップを、デバイス上の任意の場所に保存するファイルとしてエクスポートできます。このファイルはお客様の管理下にのみ置かれ、エクスポート後はBitcoin HODLが一切アクセスすることはありません。</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">6</span> お客様の権利</h2>
+                <p>アプリをアンインストールすることで、いつでもすべての情報を削除できます。Google Play BillingまたはGoogle AdMobがお客様に代わって管理するデータについて情報開示を求める場合は、Googleに直接お問い合わせいただくか、それぞれのプライバシーポリシーをご確認ください。</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">7</span> 未成年者について</h2>
+                <p>Bitcoin HODLは13歳未満のお子様を対象としておらず、未成年者のデータを意図的に収集することはありません。</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">8</span> 本ポリシーの変更について</h2>
+                <p>本ポリシーが変更された場合、本文書冒頭の日付が更新されます。</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">9</span> お問い合わせ</h2>
+                <p>プライバシーに関するお問い合わせは、次のメールアドレスまでご連絡ください:</p>
+                <div class="contact-highlight">bitcoinhodl.app@gmail.com</div>
+            </div>
+
+            <div class="policy-note">Bitcoin HODL — 本書は、現行バージョンのアプリケーションの実際の動作を反映しています。</div>
+        </div>
+
+        <!-- 한국어 콘텐츠 -->
+        <div class="lang-ko">
+            <h1>개인정보 처리방침 — Bitcoin HODL</h1>
+            <div class="update-badge">
+                <span class="dot"></span> 최종 업데이트: 2026년 8월 24일
+            </div>
+            <p class="intro-text">Bitcoin HODL("본 앱")은 비트코인 자산 추적 애플리케이션입니다. 이 정책은 어떤 데이터가 수집되고 어떻게 사용되는지 설명합니다.</p>
+
+            <div class="section">
+                <h2><span class="num">1</span> 앱이 수집하지 않는 데이터</h2>
+                <p>Bitcoin HODL은 회원가입이나 로그인을 요구하지 않습니다. 사용자의 Bitcoin 매수 내역, 지갑, 잔액은 오직 사용자의 기기에만 저장됩니다. 이 데이터는 Bitcoin HODL의 서버나 제3자 서버로 전송되지 않습니다.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">2</span> Google Play Billing이 처리하는 데이터</h2>
+                <p>Premium을 구독하는 경우, 결제는 Google Play가 직접 처리합니다. Bitcoin HODL은 사용자의 카드 번호나 결제 정보를 받지 않습니다. Google Play는 자체 개인정보 처리방침에 따라 해당 구매 내역을 관리합니다.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">3</span> 광고(Google AdMob)</h2>
+                <p>Bitcoin HODL은 무료 플랜에서 Google AdMob 광고를 표시할 수 있습니다. 이 기능은 현재 비활성화되어 있어 현재 설치된 버전에서는 어떤 사용자도 광고를 보지 않습니다. 활성화되면 AdMob은 광고, 분석, 부정 사용 방지를 목적으로 IP 주소(대략적인 위치 추정용), 광고 상호작용, 진단/충돌 정보, 기기 식별자를 자동으로 수집할 수 있습니다. 유럽경제지역(EEA) 또는 영국의 사용자에게 맞춤 광고를 표시하기 전에, 앱은 관련 법규에 따라 명시적인 동의를 요청합니다. Google이 이 데이터를 처리하는 방법에 대한 자세한 내용: <a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a></p>
+            </div>
+            <div class="section">
+                <h2><span class="num">4</span> 시장 데이터 및 차트</h2>
+                <p>가격 차트는 앱 내에서 네이티브로 렌더링되며, 어떠한 타사 위젯이나 콘텐츠도 불러오지 않습니다. 표시되는 가격 및 시장 데이터는 Coinbase, Binance 등 제공업체의 공개 API에서 앱이 직접 조회한 것입니다 — 이 요청에는 사용자의 개인 데이터가 포함되지 않습니다.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">5</span> 백업</h2>
+                <p>사용자는 자신의 데이터를 백업하여 직접 선택한 위치의 파일로 기기에 저장하여 내보낼 수 있습니다. 해당 파일은 전적으로 사용자의 통제 하에 있으며, 내보낸 이후 Bitcoin HODL은 이 파일에 접근할 수 없습니다.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">6</span> 사용자의 권리</h2>
+                <p>앱을 삭제하면 언제든지 모든 정보를 삭제할 수 있습니다. Google Play Billing 또는 Google AdMob이 사용자를 대신해 관리하는 데이터에 대한 정보를 요청하려면 Google에 직접 문의하거나 해당 개인정보 처리방침을 참고하세요.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">7</span> 미성년자</h2>
+                <p>Bitcoin HODL은 13세 미만 아동을 대상으로 하지 않으며, 고의로 미성년자의 데이터를 수집하지 않습니다.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">8</span> 이 정책의 변경</h2>
+                <p>이 정책이 변경되는 경우, 본 문서 상단의 날짜가 업데이트됩니다.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">9</span> 문의</h2>
+                <p>개인정보 관련 문의는 다음 주소로 연락해 주세요:</p>
+                <div class="contact-highlight">bitcoinhodl.app@gmail.com</div>
+            </div>
+
+            <div class="policy-note">Bitcoin HODL — 이 문서는 현재 버전 애플리케이션의 실제 동작을 반영합니다.</div>
+        </div>
+
+        <!-- 简体中文内容 -->
+        <div class="lang-zh">
+            <h1>隐私政策 — Bitcoin HODL</h1>
+            <div class="update-badge">
+                <span class="dot"></span> 最后更新：2026 年 8 月 24 日
+            </div>
+            <p class="intro-text">Bitcoin HODL（"本应用"）是一款比特币资产追踪工具。本政策说明我们收集哪些数据以及如何使用这些数据。</p>
+
+            <div class="section">
+                <h2><span class="num">1</span> 本应用不收集的数据</h2>
+                <p>Bitcoin HODL 不需要注册或登录。您的比特币购买记录、钱包和余额仅存储在您的设备本地。这些数据永远不会发送到 Bitcoin HODL 自己的服务器或任何第三方服务器。</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">2</span> 由 Google Play Billing 处理的数据</h2>
+                <p>如果您订阅 Premium，付款将由 Google Play 直接处理。Bitcoin HODL 永远不会收到您的银行卡号或支付信息。Google Play 会依据其自身的隐私政策管理该笔购买的历史记录。</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">3</span> 广告(Google AdMob)</h2>
+                <p>Bitcoin HODL 可能会在免费版中展示 Google AdMob 广告；该功能目前已停用，因此当前安装的版本中不会向任何用户展示广告。启用后，AdMob 可能会自动收集：IP地址(用于估算你的大致位置)、广告互动情况、诊断/崩溃信息以及设备标识符，用于广告投放、数据分析和防欺诈。在向欧洲经济区或英国的用户展示个性化广告之前，应用会依据适用法规征求其明确同意。有关Google如何处理这些数据的更多信息: <a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a></p>
+            </div>
+            <div class="section">
+                <h2><span class="num">4</span> 市场数据与图表</h2>
+                <p>价格图表在应用内以原生方式渲染，不会加载任何第三方组件或内容。所展示的价格和市场数据来自 Coinbase、Binance 等提供商的公开API，由应用直接查询获取——这些请求绝不包含你的任何个人数据。</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">5</span> 备份</h2>
+                <p>您可以将数据备份导出为一个文件，并自行选择保存在您的设备上。该文件完全由您自主掌控；一旦导出，Bitcoin HODL 便无法访问它。</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">6</span> 您的权利</h2>
+                <p>您可以随时通过卸载本应用来删除您的全部信息。如需了解 Google Play Billing 或 Google AdMob 代表您管理的数据信息，请直接联系 Google 或查阅其各自的隐私政策。</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">7</span> 未成年人</h2>
+                <p>Bitcoin HODL 不面向 13 岁以下的儿童，也不会有意收集未成年人的数据。</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">8</span> 本政策的变更</h2>
+                <p>如果本政策发生变更，本文档顶部标注的日期将随之更新。</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">9</span> 联系方式</h2>
+                <p>如有任何隐私相关问题，请发送邮件至：</p>
+                <div class="contact-highlight">bitcoinhodl.app@gmail.com</div>
+            </div>
+
+            <div class="policy-note">Bitcoin HODL — 本文档反映了当前版本应用程序的实际行为。</div>
+        </div>
+
+        <!-- TÜRKÇE İÇERİK -->
+        <div class="lang-tr">
+            <h1>Gizlilik Politikası — Bitcoin HODL</h1>
+            <div class="update-badge">
+                <span class="dot"></span> Son güncelleme: 24 Ağustos 2026
+            </div>
+            <p class="intro-text">Bitcoin HODL ("uygulama"), bir Bitcoin varlık takip uygulamasıdır. Bu politika, hangi verilerin toplandığını ve nasıl kullanıldığını açıklar.</p>
+
+            <div class="section">
+                <h2><span class="num">1</span> Uygulamanın TOPLAMADIĞI veriler</h2>
+                <p>Bitcoin HODL kayıt olmayı veya oturum açmayı gerektirmez. Bitcoin alımlarınız, cüzdanlarınız ve bakiyeniz yalnızca cihazınızda saklanır. Bu veriler hiçbir zaman Bitcoin HODL'e ait veya üçüncü taraf sunucularına gönderilmez.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">2</span> Google Play Billing tarafından işlenen veriler</h2>
+                <p>Premium'a abone olursanız, ödeme doğrudan Google Play tarafından işlenir. Bitcoin HODL kart numaranızı veya ödeme bilgilerinizi asla almaz. Google Play, bu satın alımın geçmişini kendi gizlilik politikasına göre yönetir.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">3</span> Reklam (Google AdMob)</h2>
+                <p>Bitcoin HODL, ücretsiz planda Google AdMob reklamları gösterebilir; bu özellik şu anda devre dışıdır, bu nedenle şu anda yüklü sürümde hiçbir kullanıcı reklam görmez. Etkinleştirildiğinde AdMob; reklam, analiz ve dolandırıcılık önleme amacıyla IP adresini (yaklaşık konumunu tahmin etmek için), reklamlarla etkileşimleri, tanılama/çökme bilgilerini ve cihaz kimliklerini otomatik olarak toplayabilir. Avrupa Ekonomik Alanı veya Birleşik Krallık'taki kullanıcılara kişiselleştirilmiş reklamlar gösterilmeden önce, uygulama geçerli mevzuata uygun olarak açık rızalarını isteyecektir. Google'ın bu verileri nasıl işlediği hakkında daha fazla bilgi: <a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a></p>
+            </div>
+            <div class="section">
+                <h2><span class="num">4</span> Piyasa verileri ve grafikler</h2>
+                <p>Fiyat grafiği uygulama içinde yerel olarak oluşturulur; herhangi bir üçüncü taraf widget'ı veya içeriği yüklemez. Gösterilen fiyatlar ve piyasa verileri, uygulamanın doğrudan sorguladığı Coinbase ve Binance gibi sağlayıcıların herkese açık API'lerinden gelir — bu istekler hiçbir zaman kişisel verilerinizi içermez.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">5</span> Yedekler</h2>
+                <p>Verilerinizin bir yedeğini, cihazınızda saklamayı seçtiğiniz bir dosyaya aktarabilirsiniz. Bu dosya tamamen sizin kontrolünüzde kalır; Bitcoin HODL, dışa aktarıldıktan sonra bu dosyaya erişemez.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">6</span> Haklarınız</h2>
+                <p>Uygulamayı kaldırarak istediğiniz zaman tüm bilgilerinizi silebilirsiniz. Google Play Billing veya Google AdMob'un sizin adınıza yönettiği veriler hakkında bilgi talep etmek için doğrudan Google ile iletişime geçin veya ilgili gizlilik politikalarına başvurun.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">7</span> Reşit olmayanlar</h2>
+                <p>Bitcoin HODL, 13 yaşından küçük çocuklara yönelik değildir ve bilerek reşit olmayanlardan veri toplamaz.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">8</span> Bu politikadaki değişiklikler</h2>
+                <p>Bu politika değişirse, bu belgenin başındaki tarih güncellenecektir.</p>
+            </div>
+            <div class="section">
+                <h2><span class="num">9</span> İletişim</h2>
+                <p>Gizlilikle ilgili her türlü soru için:</p>
+                <div class="contact-highlight">bitcoinhodl.app@gmail.com</div>
+            </div>
+
+            <div class="policy-note">Bitcoin HODL — bu belge, uygulamanın mevcut sürümündeki gerçek davranışını yansıtmaktadır.</div>
+        </div>
     </div>
 
     <!-- Pie de página -->
     <div class="page-footer">
         <span class="lang-es">Bitcoin HODL &copy; 2026 &nbsp;·&nbsp; Privacidad y transparencia</span>
         <span class="lang-en">Bitcoin HODL &copy; 2026 &nbsp;·&nbsp; Privacy and transparency</span>
+        <span class="lang-fr">Bitcoin HODL &copy; 2026 &nbsp;·&nbsp; Confidentialité et transparence</span>
+        <span class="lang-de">Bitcoin HODL &copy; 2026 &nbsp;·&nbsp; Datenschutz und Transparenz</span>
+        <span class="lang-it">Bitcoin HODL &copy; 2026 &nbsp;·&nbsp; Privacy e trasparenza</span>
+        <span class="lang-pt">Bitcoin HODL &copy; 2026 &nbsp;·&nbsp; Privacidade e transparência</span>
+        <span class="lang-ja">Bitcoin HODL &copy; 2026 &nbsp;·&nbsp; プライバシーと透明性</span>
+        <span class="lang-ko">Bitcoin HODL &copy; 2026 &nbsp;·&nbsp; 개인정보 보호와 투명성</span>
+        <span class="lang-zh">Bitcoin HODL &copy; 2026 &nbsp;·&nbsp; 隐私与透明</span>
+        <span class="lang-tr">Bitcoin HODL &copy; 2026 &nbsp;·&nbsp; Gizlilik ve şeffaflık</span>
     </div>
 
     <script>
+        // AMPLIADO 2026-08-26 (2 idiomas -> 10, cubriendo los 11 idiomas
+        // de la app: en_US/en_GB comparten el mismo texto en inglés).
+        // El selector ahora usa el atributo data-lang de cada botón en
+        // vez de comparar texto visible -- más robusto con 10 botones y
+        // scripts distintos (japonés, coreano, chino...).
+        const SUPPORTED_LANGS = ['es', 'en', 'fr', 'de', 'it', 'pt', 'ja', 'ko', 'zh', 'tr'];
+
         function setLanguage(lang) {
+            if (!SUPPORTED_LANGS.includes(lang)) lang = 'es';
             document.body.setAttribute('data-lang', lang);
-            // Actualizar botones activos
             document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.textContent.trim().toLowerCase().includes(lang === 'es' ? 'español' : 'english')) {
-                    btn.classList.add('active');
-                }
+                btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
             });
             // Guardar preferencia (opcional)
             localStorage.setItem('privacyLang', lang);
@@ -409,11 +833,7 @@
         // Al cargar, leer preferencia guardada o usar español
         (function() {
             const saved = localStorage.getItem('privacyLang');
-            if (saved === 'en') {
-                setLanguage('en');
-            } else {
-                setLanguage('es');
-            }
+            setLanguage(SUPPORTED_LANGS.includes(saved) ? saved : 'es');
         })();
     </script>
 </body>
